@@ -1,2 +1,61 @@
-# household-budget-app
-A simple household budget application written in Python.
+# 家計簿アプリ（Household Budget App）
+![CI](https://github.com/ユーザー名/household-budget-app/actions/workflows/ci.yml/badge.svg)
+
+## 概要・目的
+Pythonで作成したシンプルな家計簿アプリです。
+日々の収入・支出を記録し、合計金額や残高を確認することを目的としています。
+また、収入・支出やカテゴリ別の支出を円グラフで可視化できます。
+
+## 主な機能
+- 収入・支出の登録
+- 家計簿データの一覧表示
+- 収入・支出・残高の自動計算
+- 収入と支出の円グラフ作成
+- カテゴリ別支出の円グラフ作成
+- 登録したデータの1件ずつの削除
+- CSVファイルへのデータ保存
+
+## 使用例
+アプリを起動すると、次のメニューが表示されます。
+```text
+===== 家計簿アプリ =====
+1. 家計簿を入力
+2. 一覧を見る
+3. 収入・支出・残高を見る
+4. グラフを見る
+5. データを1件削除
+6. 終了
+番号を入力してください：
+```
+例えば「1. 家計簿を入力」を選択すると、日付、収入・支出、カテゴリ、金額、メモを入力して保存できます。
+「4. グラフを見る」では、収入と支出の割合やカテゴリ別支出を円グラフとして確認できます。
+
+### グラフの例
+ここに実際に作成したグラフの画像を掲載します。
+![収入と支出のグラフ](income_expense.png)
+
+## インストール方法
+GitHub Codespacesを使用する場合、Codespaceの作成時に必要なPythonライブラリと日本語フォントが自動でインストールされます。
+
+## 実行方法
+ターミナルで以下のコマンドを実行します。
+```bash
+python3 app.py
+```
+表示されたメニューから、使用したい機能の番号を入力してください。
+
+## 開発環境の設定
+本アプリはPython 3を使用しています。
+必要なPythonライブラリは `requirements.txt` に記載しています。
+GitHub Codespacesでは `.devcontainer/devcontainer.json` を使用し、必要なライブラリと日本語フォントを自動でセットアップします。
+
+## テスト方法
+テストは以下のコマンドで実行します。
+```bash
+python3 -m unittest discover
+```
+また、GitHub Actionsを利用して、GitHubへのpush時に自動でテストを実行します。
+
+## CI
+GitHub Actionsを使用して、コードをpushした際に自動テストを行います。
+CIの実行結果は、このREADME上部のCIバッジまたはGitHubの「Actions」タブから確認できます。
