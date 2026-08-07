@@ -9,12 +9,7 @@ FILE_NAME = "kakeibo.csv"
 
 
 # グラフで日本語を表示するための設定
-plt.rcParams["font.family"] = [
-    "Hiragino Sans",
-    "Yu Gothic",
-    "Meiryo",
-    "sans-serif",
-]
+plt.rcParams["font.family"] = "Noto Sans CJK JP"
 
 
 # CSVファイルがなければ、新しく作る関数
@@ -137,7 +132,89 @@ def show_list():
         print("金額：", row["金額"], "円")
         print("メモ：", row["メモ"])
 
+# 家計簿データを1件ずつ削除する関数
+def delete_data():
 
+    print("")
+    print("===== データを削除 =====")
+
+    with open(
+        FILE_NAME,
+        "r",
+        newline="",
+        encoding="utf-8-sig"
+    ) as file:
+
+        reader = csv.DictReader(file)
+        data_list = list(reader)
+
+    if len(data_list) == 0:
+        print("削除できるデータがありません。")
+        return
+
+    # データを番号付きで表示
+    for number, row in enumerate(data_list, start=1):
+
+        print("")
+        print("番号：", number)
+        print("日付：", row["日付"])
+        print("種類：", row["種類"])
+        print("カテゴリ：", row["カテゴリ"])
+        print("金額：", row["金額"], "円")
+        print("メモ：", row["メモ"])
+
+    print("")
+
+    while True:
+
+        delete_number = input(
+            "削除したいデータの番号を入力してください："
+        )
+
+        try:
+            delete_number = int(delete_number)
+
+            if 1 <= delete_number <= len(data_list):
+                break
+
+            else:
+                print("正しい番号を入力してください。")
+
+        except ValueError:
+            print("数字を入力してください。")
+
+    # 選んだデータを削除
+    deleted_data = data_list.pop(delete_number - 1)
+
+    # CSVファイルを書き直す
+    with open(
+        FILE_NAME,
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as file:
+
+        writer = csv.DictWriter(
+            file,
+            fieldnames=[
+                "日付",
+                "種類",
+                "カテゴリ",
+                "金額",
+                "メモ"
+            ]
+        )
+
+        writer.writeheader()
+        writer.writerows(data_list)
+
+    print("")
+    print(
+        deleted_data["日付"],
+        deleted_data["カテゴリ"],
+        deleted_data["金額"] + "円",
+        "を削除しました。"
+    )
 # 収入・支出・残高を表示する関数
 def show_total():
 
@@ -314,7 +391,6 @@ def show_graph_menu():
         else:
             print("1から3の番号を入力してください。")
 
-
 # メインメニューを表示する関数
 def main():
 
@@ -328,7 +404,8 @@ def main():
         print("2. 一覧を見る")
         print("3. 収入・支出・残高を見る")
         print("4. グラフを見る")
-        print("5. 終了")
+        print("5. データを1件削除")
+        print("6. 終了")
 
         choice = input("番号を入力してください：")
 
@@ -345,11 +422,14 @@ def main():
             show_graph_menu()
 
         elif choice == "5":
+            delete_data()
+
+        elif choice == "6":
             print("家計簿アプリを終了します。")
             break
 
         else:
-            print("1から5の番号を入力してください。")
+            print("1から6の番号を入力してください。")
 
 
 # このファイルを実行したときにmain関数を動かす
