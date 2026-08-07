@@ -234,7 +234,8 @@ def show_income_expense_graph():
     # 円をきれいな丸にする
     plt.axis("equal")
 
-    plt.show()
+    plt.savefig("income_expense.png")
+    plt.close()
 
 
 # カテゴリ別支出のグラフを表示する関数
@@ -284,7 +285,8 @@ def show_category_graph():
     # 円をきれいな丸にする
     plt.axis("equal")
 
-    plt.show()
+    plt.savefig("category_expense.png")
+    plt.close()
 
 
 # グラフメニューを表示する関数
