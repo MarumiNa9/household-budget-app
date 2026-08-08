@@ -34,7 +34,7 @@ Pythonで作成したシンプルな家計簿アプリです。
 ![収入と支出のグラフ](income_expense.png)
 
 ## インストール方法
-GitHub Codespacesを使用する場合、Codespaceの作成時に必要なPythonライブラリと日本語フォントが自動でインストールされます。
+GitHub Codespacesを使用する場合、Codespaceの作成時に必要なPythonライブラリと日本語フォントが自動でインストールされます。Pythonライブラリの管理には `uv` を使用しています。
 
 ## 実行方法
 ターミナルで以下のコマンドを実行します。
@@ -45,16 +45,19 @@ python3 app.py
 
 ## 開発環境の設定
 本アプリはPython 3を使用しています。
-必要なPythonライブラリは `requirements.txt` に記載しています。
-GitHub Codespacesでは `.devcontainer/devcontainer.json` を使用し、必要なライブラリと日本語フォントを自動でセットアップします。
+Pythonライブラリは `pyproject.toml` で管理し、
+`uv.lock` によって使用するライブラリのバージョンを固定しています。
+GitHub Codespacesでは `.devcontainer/devcontainer.json` を使用し、
+必要なライブラリと日本語フォントを自動でセットアップします。
 
 ## テスト方法
-テストは以下のコマンドで実行します。
+単体テストには `pytest` を使用しています。
+以下のコマンドでテストを実行します。
 ```bash
-python3 -m unittest discover
+uv run pytest
 ```
 また、GitHub Actionsを利用して、GitHubへのpush時に自動でテストを実行します。
 
 ## CI
 GitHub Actionsを使用して、コードをpushした際に自動テストを行います。
-CIの実行結果は、このREADME上部のCIバッジまたはGitHubの「Actions」タブから確認できます。
+CIの実行結果は、GitHubの「Actions」タブから確認できます。
