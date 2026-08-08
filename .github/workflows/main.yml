@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install matplotlib
-        run: pip install matplotlib
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Check Python file
         run: python -m py_compile app.py
