@@ -1,7 +1,7 @@
 # 家計簿アプリ（Household Budget App）
-![CI](https://github.com/ユーザー名/household-budget-app/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/MarumiNa9/household-budget-app/actions/workflows/test.yml/badge.svg)
 
-## 概要・目的
+## 概要
 Pythonで作成したシンプルな家計簿アプリです。
 日々の収入・支出を記録し、合計金額や残高を確認することを目的としています。
 また、収入・支出やカテゴリ別の支出を円グラフで可視化できます。
