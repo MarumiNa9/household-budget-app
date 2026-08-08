@@ -312,6 +312,7 @@ def show_income_expense_graph():
     plt.axis("equal")
 
     plt.savefig("income_expense.pdf")
+    plt.savefig("income_expense.png")
     plt.close()
 
 
@@ -363,6 +364,7 @@ def show_category_graph():
     plt.axis("equal")
 
     plt.savefig("category_expense.pdf")
+    plt.savefig("category_expense.png")
     plt.close()
 
 
