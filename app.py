@@ -311,7 +311,7 @@ def show_income_expense_graph():
     # 円をきれいな丸にする
     plt.axis("equal")
 
-    plt.savefig("income_expense.png")
+    plt.savefig("income_expense.pdf")
     plt.close()
 
 
@@ -362,7 +362,7 @@ def show_category_graph():
     # 円をきれいな丸にする
     plt.axis("equal")
 
-    plt.savefig("category_expense.png")
+    plt.savefig("category_expense.pdf")
     plt.close()
 
 
